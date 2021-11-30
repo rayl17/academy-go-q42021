@@ -799,3 +799,15 @@
 720,HoopaHoopa Confined,Psychic,Ghost,600,80,110,60,150,130,70,6,True
 720,HoopaHoopa Unbound,Psychic,Dark,680,80,160,60,170,130,80,6,True
 721,Volcanion,Fire,Water,600,80,110,120,130,90,70,6,True
+1,bulbasaur,grass,poison,0,0,0,0,0,0,0,0,false
+1,bulbasaur,grass,poison,0,0,0,0,0,0,0,0,false
+2,ivysaur,grass,poison,0,0,0,0,0,0,0,0,false
+3,venusaur,grass,poison,0,0,0,0,0,0,0,0,false
+3,venusaur,grass,poison,0,0,0,0,0,0,0,0,false
+6,charizard,fire,flying,0,0,0,0,0,0,0,0,false
+6,charizard,fire,flying,0,0,0,0,0,0,0,0,false
+6,charizard,fire,flying,0,0,0,0,0,0,0,0,false
+7,squirtle,water,no type,0,0,0,0,0,0,0,0,false
+8,wartortle,water,no type,0,0,0,0,0,0,0,0,false
+9,blastoise,water,no type,0,0,0,0,0,0,0,0,false
+345,lileep,rock,grass,0,0,0,0,0,0,0,0,false

@@ -5,21 +5,23 @@ import (
 	"time"
 
 	"github.com/gorilla/mux"
-	"github.com/raymundo/academy-go-q42021/controller"
-	"github.com/raymundo/academy-go-q42021/global"
+	"github.com/rayl17/academy-go-q42021/controller"
+	parameters "github.com/rayl17/academy-go-q42021/global"
 )
 
-func NewRouter() *http.Server {
+func NewRouter(c controller.ControllerInterface) *http.Server {
+
 	router := mux.NewRouter()
 
-	router.HandleFunc("/pokemon/{name}", controller.GetPokemonByName).Methods("GET")
-	router.HandleFunc("/pokemonid/{id}", controller.GetPokemonById).Methods("GET")
+	router.HandleFunc("/pokemon/{name}", c.GetPokemonByName).Methods("GET")
+	router.HandleFunc("/pokemonid/{id}", c.GetPokemonById).Methods("GET")
+	router.HandleFunc("/pokemon/{name}", c.PostPokemon).Methods("POST")
 
 	srv := http.Server{
 		Handler:      router,
-		Addr:         global.ServerConfig.Addres,
-		WriteTimeout: time.Duration(global.ServerConfig.WriteTimeout) * time.Second,
-		ReadTimeout:  time.Duration(global.ServerConfig.WriteTimeout) * time.Second,
+		Addr:         parameters.ServerConfig.Addres,
+		WriteTimeout: time.Duration(parameters.ServerConfig.WriteTimeout) * time.Second,
+		ReadTimeout:  time.Duration(parameters.ServerConfig.WriteTimeout) * time.Second,
 	}
 
 	return &srv
