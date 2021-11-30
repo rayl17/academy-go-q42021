@@ -1,4 +1,4 @@
-package global
+package parameters
 
 type ServerOpts struct {
 	Addres       string
@@ -11,3 +11,6 @@ var ServerConfig = ServerOpts{
 	WriteTimeout: 15,
 	ReadTimeout:  15,
 }
+
+const CsvPath string = "assets/pokemons.csv"
+const ApiUrl string = "https://pokeapi.co/api/v2/"
