@@ -12,6 +12,7 @@ type Usecaseinterface interface {
 	GetPokemonByName(name string) (*model.Pokemon, error)
 	GetPokemonByID(id string) (*model.Pokemon, error)
 	SavePokemonByNameAPI(name string) (string, error)
+	GetPokemonsConcurrently(types string, items int, items_per_worker int) (*[]model.Pokemon, error)
 }
 
 type PokemonUsecase struct {
@@ -39,7 +40,6 @@ func (u *PokemonUsecase) GetPokemonByName(name string) (*model.Pokemon, error) {
 
 }
 
-// int
 func (u *PokemonUsecase) GetPokemonByID(id string) (*model.Pokemon, error) {
 
 	pokemon, err := u.service.GetPokemonByID(id)
@@ -62,4 +62,17 @@ func (u *PokemonUsecase) SavePokemonByNameAPI(name string) (string, error) {
 	}
 
 	return message, nil
+}
+
+func (u *PokemonUsecase) GetPokemonsConcurrently(types string, items int, items_per_worker int) (*[]model.Pokemon, error) {
+
+	pokemon, err := u.service.GetPokemonsByTypes(types, items, items_per_worker)
+
+	if err != nil {
+
+		return nil, errors.New("Something went wrong")
+	}
+
+	return pokemon, nil
+
 }

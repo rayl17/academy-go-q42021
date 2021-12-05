@@ -11,6 +11,7 @@ import (
 )
 
 func main() {
+	println("Server is starting...")
 
 	pokemonService, _ := service_csv.NewPokemonService(parameters.CsvPath)
 
@@ -19,6 +20,7 @@ func main() {
 	pokemonController := controller.NewController(pokemonUsecase)
 
 	srv := router.NewRouter(pokemonController)
+	println("Server is up at port", parameters.ServerConfig.Addres)
 
 	err := srv.ListenAndServe()
 

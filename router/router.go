@@ -14,8 +14,9 @@ func NewRouter(c controller.ControllerInterface) *http.Server {
 	router := mux.NewRouter()
 
 	router.HandleFunc("/pokemon/{name}", c.GetPokemonByName).Methods("GET")
-	router.HandleFunc("/pokemonid/{id}", c.GetPokemonById).Methods("GET")
+	router.HandleFunc("/pokemonid/{id}", c.GetPokemonByID).Methods("GET")
 	router.HandleFunc("/pokemon/{name}", c.PostPokemon).Methods("POST")
+	router.HandleFunc("/concurrency/", c.GetPokemonsConcurrently).Methods("GET")
 
 	srv := http.Server{
 		Handler:      router,
