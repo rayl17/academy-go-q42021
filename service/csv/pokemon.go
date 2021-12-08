@@ -69,9 +69,9 @@ func (p *PokemonService) getPokemons() []model.Pokemon {
 	defer f.Close()
 
 	csvReader := csv.NewReader(f)
-	data, err1 := csvReader.ReadAll()
+	data, err := csvReader.ReadAll()
 
-	if err1 != nil {
+	if err != nil {
 		log.Fatal(err)
 	}
 
@@ -89,14 +89,12 @@ func (ps *PokemonService) SearchPokemonApi(name string) (string, error) {
 
 	}
 
-	res2, err2 := savePokemonCSV(res)
+	res2, err := savePokemonCSV(res)
 
-	if err2 != nil {
-		return "", err2
+	if err != nil {
+		return "", err
 	}
-
 	return res2, nil
-
 }
 
 /// this function recives the response from the api and  and  add the pokemon to the csv file row
@@ -112,15 +110,15 @@ func savePokemonCSV(res *http.Response) (string, error) {
 
 	var pokemon = new(model.Poke)
 
-	err2 := json.Unmarshal(content, &pokemon)
+	err := json.Unmarshal(content, &pokemon)
 
-	if err2 != nil {
-		return "", err2
+	if err != nil {
+		return "", err
 	}
 
-	file, err3 := os.OpenFile(parameters.CsvPath, os.O_APPEND|os.O_WRONLY, os.ModeAppend)
-	if err3 != nil {
-		return "", err3
+	file, err := os.OpenFile(parameters.CsvPath, os.O_APPEND|os.O_WRONLY, os.ModeAppend)
+	if err != nil {
+		return "", err
 	}
 
 	defer file.Close()

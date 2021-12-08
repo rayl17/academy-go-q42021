@@ -1,5 +1,6 @@
 package model
 
+//Pokemons main struct used in CSV file
 type Pokemon struct {
 	Id         string `json:"id"`
 	Name       string `json:"name"`

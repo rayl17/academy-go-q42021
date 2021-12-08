@@ -11,21 +11,19 @@ import (
 )
 
 func main() {
-	println("Server is starting...")
+	log.Print("Server is starting...")
 
-	pokemonService, _ := service_csv.NewPokemonService(parameters.CsvPath)
+	var err error
 
+	pokemonService, err := service_csv.NewPokemonService(parameters.CsvPath)
 	pokemonUsecase := usecase.NewUseCase(pokemonService)
-
 	pokemonController := controller.NewController(pokemonUsecase)
 
 	srv := router.NewRouter(pokemonController)
-	println("Server is up at port", parameters.ServerConfig.Addres)
+	log.Print("Server is up at port", parameters.ServerConfig.Addres)
 
-	err := srv.ListenAndServe()
-
+	err = srv.ListenAndServe()
 	if err != nil {
 		log.Fatal(err)
 	}
-
 }
